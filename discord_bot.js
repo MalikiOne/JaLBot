@@ -13,7 +13,10 @@ var yt 				= require("./youtube_plugin");
 var youtube_plugin 	= new yt();
 //Game List
 var games 			= require("./config/games.json");
-var streams 			= require("./config/streams.json");
+//Twitch User List (Required json in Config)
+var streams 		= require("./config/streams.json");
+//Twitter User List (Required json in Config)
+var twitteruser 	= require("./config/twitteruser.json");
 var qs 				= require("querystring");
 var htmlToText 		= require('html-to-text');
 // !GIF Support
@@ -28,7 +31,7 @@ var rssFeeds 		= require("./config/rss.json");
 
 var commands = {
 		//Repond Back Commands
-	    "pet": {
+"pet": {
         usage: "<pets>",
         description: "Everyone loves being pet, right!?! Pets each *@user*. Leave emtpy (or mention me too) to pet me!",
         process: function(bot, message, params, errorCallback) {
@@ -55,6 +58,14 @@ var commands = {
 
 		// send message
 		bot.sendMessage(message, message.author + " pets " + pets.join(" ")).catch(errorCallback);
+	}
+},
+
+"say": {
+	description: "I'll repeat what you said.",
+	process: function(bot, message, params, errorCallback) {
+		var says = [];
+		bot.sendMessage(message, says.uptime(" ")).catch(errorCallback);
 	}
 },
 
@@ -130,7 +141,7 @@ var commands = {
 		// TODO: message.everyo	neMentioned is broken so for now we're using indexOf()
 		if (message.mentions.length === 0 || params.indexOf("@everyone") !== -1) {
 			if (params.indexOf("@everyone") !== -1) { chills.push(message.author + " pets @everyone "); }
-			bot.sendMessage(message, pets + "*Kek*").catch(errorCallback);
+			bot.sendMessage(message, chills + "*Kek*").catch(errorCallback);
 			return;
 		}
 
@@ -141,53 +152,56 @@ var commands = {
 		}
 
 		// if nekobot is on the list, purr
-		if (message.isMentioned(bot.user)) { chills.push("*https://www.youtube.com/watch?v=SjBBDJ5OiT0*"); }
+		if (message.isMentioned(bot.user)) { chills.push("*https://www.youtube.com/watch?v=SjBBDJ5OiT0*"); 
+		}
 
 		// send message
 		bot.sendMessage(message, message.author + " Passes the bong to " + chills.join(" ")).catch(errorCallback);
 	}
 },
 
-	//Twitch Streamers Links
-    "twitch": {
-        usage: "<name of game>",
+//Twitch Streamers Links
+"twitch": {
+        usage: "<name of streamer>",
         description: "pings channel asking if anyone wants to play",
         process: function(bot,msg,suffix){
+			
             var stream = streams[suffix];
             if(!stream) {
                 stream = suffix;
             }
-            bot.sendMessage(msg.channel, stream );
-            console.log("sent game invites for " + stream);
+            bot.sendMessage(msg.channel,"http://twitch.tv/" + stream );
         }
     },
 
-	//Standard Commands
-    "hype": {
-        description: "timmacHYPE Animated",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://i.imgur.com/20CO8KA.gif");
+//Twitter Streamers Links
+"twitter": {
+        usage: "<Sends Twittter Link>",
+        description: "pings channel asking if anyone wants to play",
+        process: function(bot,msg,suffix){
+			
+            var stream = twitteruser[suffix];
+            if(!stream) {
+                stream = suffix;
+            }
+            bot.sendMessage(msg.channel,"http://twitter.com/" + stream );
         }
     },	
-    "bd": {
+
+//Standard Commands
+"bd": {
         description: "information about BetterDiscord",
         process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " Get Twitch Emotes on Discord! Check the **#FAQ** for more info!");
+            bot.sendMessage(msg.channel, " Get Twitch Emotes on Discord! visit **https://github.com/Jiiks/BetterDiscordApp** for more info!");
         }
     },	
-    "steam": {
-        description: "Steam Community Group",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://steamcommunity.com/groups/timmac");
-        }
-    },
-    "johncena": {
+"johncena": {
         description: "AND HIS NAME IS",
         process: function(bot, msg, suffix) {
             bot.sendMessage(msg.channel, " **AND HIS NAME IS** https://www.youtube.com/watch?v=4k1xY7v8dDQ");
         }
     },	
-	"gif": {
+"gif": {
 		usage: "<image tags>",
         description: "returns a random gif matching the tags passed",
 		process: function(bot, msg, suffix) {
@@ -202,7 +216,7 @@ var commands = {
 		    });
 		}
 	},
-    "ping": {
+"ping": {
         description: "responds pong, useful for checking if bot is alive",
         process: function(bot, msg, suffix) {
             bot.sendMessage(msg.channel, msg.sender+" pong!");
@@ -211,7 +225,7 @@ var commands = {
             }
         }
     },
-    "game": {
+"game": {
         usage: "<name of game>",
         description: "pings channel asking if anyone wants to play",
         process: function(bot,msg,suffix){
@@ -223,19 +237,19 @@ var commands = {
             console.log("sent game invites for " + game);
         }
     },
-    "youtube": {
+"youtube": {
         usage: "<video tags>",
         description: "gets youtube video matching tags",
         process: function(bot,msg,suffix){
             youtube_plugin.respond(suffix,msg.channel,bot);
         }
     },	
-    "log": {
+"log": {
         usage: "<log message>",
         description: "logs message to bot console",
         process: function(bot,msg,suffix){console.log(msg.content);}
     },
-    "reddit": {
+"reddit": {
         usage: "[subreddit]",
         description: "Returns the top post on reddit. Can optionally pass a subreddit to get the top psot there instead",
         process: function(bot,msg,suffix) {
@@ -353,7 +367,6 @@ bot.on("message", function (msg) {
         
     }
 });
- 
 
 //Log user status changes
 bot.on("presence", function(data) {
