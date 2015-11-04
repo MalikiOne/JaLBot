@@ -6,46 +6,60 @@ A chat bot for discord app based off <a href="https://github.com/chalda/DiscordB
 
 # Features:
 Commands
+
 JaLBOT (BETA) Discord Bot Commands:
-The Bot only works in #general 
+
 Available Commands:
 
 Interative Commands (@x shoots @y)
+
 - !pet. !dank, !shoot, !chill
 
 Commands
-!gif <image tags>
-    returns a random gif matching the tags passed
 
-!game <name of game>
-    pings channel asking if anyone wants to play
+- !gif <image tags>
+    
+	returns a random gif matching the tags passed
 
-!reddit [subreddit]
-    Returns the top post on reddit. Can optionally pass a subreddit to get the top post there instead
+- !game <name of game>
+    
+	Pings channel asking if anyone wants to play
 
-!youtube <video name>
-    gets youtube video matching tags
+- !reddit [subreddit]
+    
+	Returns the top post on reddit. Can optionally pass a subreddit to get the top post there instead
 
-!steam
-    Steam Community Group
+- !youtube <video name>
+    
+	Gets youtube video matching tags
 
-!lasttweet
-    Last Tweet From Timmac Twitter
+- !steam
+    
+	Steam Community Group
 
-!bd
-    information about BetterDiscord
+- !lasttweet
+    
+	Last Tweet From Timmac Twitter
 
-!johncena
-    The one and only
+- !bd
+    
+	Information about BetterDiscord
 
-!hype
-    timmacHYPE Animated
+- !johncena
+    
+	The one and only
 
-!twitch <streamer name>
-    timmac, shroomz, floppy, honyolo, monty. jounie, ming, mrmoon
+- !hype
+    
+	timmacHYPE Animated
 
-!ping
-    responds pong, useful for checking if bot is alive
+- !twitch <streamer name>
+    
+	timmac, shroomz, floppy, honyolo, monty. jounie, ming, mrmoon
+
+- !ping
+    
+	responds pong, useful for checking if bot is alive
 	
 ## RSS:
     you can create an rss.json file adding rss feeds as commands. See rss.json.example in the config folder for details
@@ -53,11 +67,9 @@ Commands
 ## Other Bits and bobs
 	If you want !game and !twitch commands please be sure to edit the games and streams JSON files to fit your needs!
 	
-# Instructions for using the files
-
+## Instructions for using the files
 Requires Node (probably 0.12)
-
-Pull this repo
+Pull this repo (Or Download Zip and Extract)
 
 Edit/Create auth.json: 
 Discord Bot's email/password
