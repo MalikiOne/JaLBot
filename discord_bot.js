@@ -22,6 +22,23 @@ var config = {
 };
 
 var commands = {
+		//Join Server Command (!join-server <Discord.gg Invite Code>)
+		//Would recommend deleting this command after joining
+	    "join-server": {
+        usage: "<invite>",
+        description: "joins the server it's invited to",
+        process: function(bot,msg,suffix) {
+            console.log(bot.joinServer(suffix,function(error,server) {
+                console.log("callback: " + arguments);
+                if(error){
+                    bot.sendMessage(msg.channel,"failed to join: " + error);
+                } else {
+                    console.log("Joined server " + server);
+                    bot.sendMessage(msg.channel,"Successfully joined " + server);
+                }
+            }));
+        }
+    },
 		//Repond Back Commands
 	    "pet": {
         usage: "<pets>",
