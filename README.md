@@ -17,7 +17,9 @@ Interative Commands
 
 Commands
 
-- !gif <image tags> => returns a random gif matching the tags passed. !gif cute cats doing stuff
+- !gif <image tags>
+
+	returns a random gif matching the tags passed. !gif cute cats doing stuff
 
 - !game <name of game>
     
