@@ -11,15 +11,13 @@ JaLBOT (BETA) Discord Bot Commands:
 
 Available Commands:
 
-Interative Commands (@x shoots @y)
+Interative Commands
 
-- !pet. !dank, !shoot, !chill
+- !pet. !dank, !shoot, !chill = <user>
 
 Commands
 
-- !gif <image tags>
-    
-	returns a random gif matching the tags passed
+- !gif <image tags> = returns a random gif matching the tags passed. !gif cute cats doing stuff
 
 - !game <name of game>
     
