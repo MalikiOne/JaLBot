@@ -48,14 +48,14 @@ Commands
 - !johncena
     
 	The one and only
-
-- !hype
+	
+- !twitter <Twitter username>
     
-	timmacHYPE Animated
+	(http://twitter,com/<streamers name>)
 
 - !twitch <streamer name>
     
-	timmac, shroomz, floppy, honyolo, monty. jounie, ming, mrmoon
+	(http://twitch.tv/<streamers name>)
 
 - !ping
     
