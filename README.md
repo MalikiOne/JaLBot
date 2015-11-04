@@ -65,7 +65,7 @@ Commands
     you can create an rss.json file adding rss feeds as commands. See rss.json.example in the config folder for details
 
 ## Other Bits and bobs
-	If you want !game and !twitch commands please be sure to edit the games and streams JSON files to fit your needs!
+	If you want !game, !twitch & !twitter commands please be sure to edit the games and streams JSON files to fit your needs!
 	
 ## Instructions for using the files
 Requires Node (probably 0.12)
