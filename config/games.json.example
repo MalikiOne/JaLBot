@@ -1,0 +1,16 @@
+{
+    "cs": "**Counter-Strike**",
+    "csgo": "**Counter-Strike: Global Offensive**",
+    "cs:go": "**Counter-Strike: Global Offensive**",
+    "1v1": "**Counter-Strike: Global Offensive - Multi 1v1 Arena** *Check **#gameservers** For More Info*",
+	"arma3": "**ARMA 3**",
+    "hon": "**Heroes of Newerth**",
+    "hots": "**Heroes of the Storm**",
+    "sc2": "**Starcraft II**",
+	"warf": "**Warframe**",
+	"gtao": "**Grand Theft Auto: Online**",
+	"gtav": "**Grand Theft Auto: V**",
+	"gta": "**Grand Theft Auto**",
+	"lol": "**League of Legends**",
+	"wow": "**World of Warcraft**"
+}

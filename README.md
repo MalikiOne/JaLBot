@@ -6,48 +6,53 @@ A chat bot for discord app based off <a href="https://github.com/chalda/DiscordB
 
 # Features:
 Commands
+JaLBOT (BETA) Discord Bot Commands:
+The Bot only works in #general 
+Available Commands:
 
-!join-server <discord.gg invite code>
+Interative Commands (@x shoots @y)
+- !pet. !dank, !shoot, !chill
+
+Commands
 !gif <image tags>
     returns a random gif matching the tags passed
+
 !game <name of game>
     pings channel asking if anyone wants to play
+
 !reddit [subreddit]
-    Returns the top post on reddit. Can optionally pass a subreddit to get the top psot there instead
+    Returns the top post on reddit. Can optionally pass a subreddit to get the top post there instead
+
 !youtube <video name>
     gets youtube video matching tags
+
 !steam
     Steam Community Group
+
 !lasttweet
-    Last Tweet From Timmac's Twitter
+    Last Tweet From Timmac Twitter
+
 !bd
     information about BetterDiscord
+
 !johncena
-     The one and only
+    The one and only
+
 !hype
-      Animated 
-!timmac
-    Link To Timmac Stream
-!shroomz
-    Link To Shroomz Stream
-!floppy
-    Link To Floppy Pancakes Stream
-!honyolo
-    Link To Hon Yolo Stream 
-!monty
-    Link To Monty Brython Stream
-!jounie
-    Link To Jounie Jingtai Stream
-!ming
-    Link To Ming Jingtai Stream
-!mrmoon
-    Link To Mr Moon's Stream
+    timmacHYPE Animated
+
+!twitch <streamer name>
+    timmac, shroomz, floppy, honyolo, monty. jounie, ming, mrmoon
+
 !ping
     responds pong, useful for checking if bot is alive
-
+	
 ## RSS:
-    you can create an rss.json file adding rss feeds as commands. See rss.json.example for details
+    you can create an rss.json file adding rss feeds as commands. See rss.json.example in the config folder for details
 
+## Other Bits and bobs
+	If you want !game and !twitch commands 
+	
 # Instructions for using the files
 
 Requires Node (probably 0.12)

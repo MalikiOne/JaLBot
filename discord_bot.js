@@ -1,18 +1,21 @@
 /*
-	this bot is a ping pong bot, and every time a message
-	beginning with "ping" is sent, it will reply with
-	"pong".
+JaLBot V 0.0.2
+Built Off StreamingMutt DougleyBot (https://github.com/SteamingMutt/DougleyBot)
 */
-// Discord Unoffical API
-var Discord = require("discord.js");
-// YouTube Data API
-var yt = require("./youtube_plugin");
-var youtube_plugin = new yt();
-// Get the email and password
-var AuthDetails = require("./auth.json");
-var qs = require("querystring");
 
-var htmlToText = require('html-to-text');
+
+// Discord Unoffical API
+var Discord 		= require("discord.js");
+// Discord API  Auth
+var AuthDetails 	= require("./auth.json");
+// YouTube Data API
+var yt 				= require("./youtube_plugin");
+var youtube_plugin 	= new yt();
+//Game List
+var games 			= require("./config/games.json");
+var streams 			= require("./config/streams.json");
+var qs 				= require("querystring");
+var htmlToText 		= require('html-to-text');
 // !GIF Support
 var config = {
     "api_key": "dc6zaTOxFJmzC",
@@ -20,25 +23,7 @@ var config = {
     "url": "http://api.giphy.com/v1/gifs/search",
     "permission": ["NORMAL"]
 };
-
 var commands = {
-		//Join Server Command (!join-server <Discord.gg Invite Code>)
-		//Would recommend deleting this command after joining
-	    "join-server": {
-        usage: "<invite>",
-        description: "joins the server it's invited to",
-        process: function(bot,msg,suffix) {
-            console.log(bot.joinServer(suffix,function(error,server) {
-                console.log("callback: " + arguments);
-                if(error){
-                    bot.sendMessage(msg.channel,"failed to join: " + error);
-                } else {
-                    console.log("Joined server " + server);
-                    bot.sendMessage(msg.channel,"Successfully joined " + server);
-                }
-            }));
-        }
-    },
 		//Repond Back Commands
 	    "pet": {
         usage: "<pets>",
@@ -161,54 +146,19 @@ var commands = {
 },
 
 	//Twitch Streamers Links
-    "timmac": {
-        description: "Link To Timmac Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://twitch.tv/timmac");
+    "twitch": {
+        usage: "<name of game>",
+        description: "pings channel asking if anyone wants to play",
+        process: function(bot,msg,suffix){
+            var stream = streams[suffix];
+            if(!stream) {
+                stream = suffix;
+            }
+            bot.sendMessage(msg.channel, stream );
+            console.log("sent game invites for " + stream);
         }
     },
-    "mrmoon": {
-        description: "Link To Timmac Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://twitch.tv/mrmoonshouse");
-        }
-    },
-    "ming": {
-        description: "Link To Timmac Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://www.twitch.tv/mrbong011");
-        }
-    },
-    "honyolo": {
-        description: "Link To Hon Yolo Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel,"http://twitch.tv/honyolo");
-        }
-    },
-    "floppy": {
-        description: "Link To Floppy Pancakes Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://twitch.tv/floppypancakes");
-        }
-    },
-    "monty": {
-        description: "Link To Monty Brython Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://www.twitch.tv/montybrython");
-        }
-    },
-    "shroomz": {
-        description: "Link To Shroomz Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://www.twitch.tv/shroomztv");
-        }
-    },
-    "jounie": {
-        description: "Link To Jounie's Stream",
-        process: function(bot, msg, suffix) {
-            bot.sendMessage(msg.channel, " http://www.twitch.tv/ravencatt");
-        }
-    },
+
 	//Standard Commands
     "hype": {
         description: "timmacHYPE Animated",
@@ -262,7 +212,7 @@ var commands = {
         usage: "<name of game>",
         description: "pings channel asking if anyone wants to play",
         process: function(bot,msg,suffix){
-            var game = game_abbreviations[suffix];
+            var game = games[suffix];
             if(!game) {
                 game = suffix;
             }
@@ -284,7 +234,7 @@ var commands = {
     },
     "reddit": {
         usage: "[subreddit]",
-        description: "Returns the top post on reddit. Can optionally pass a subreddit to get the top post there instead",
+        description: "Returns the top post on reddit. Can optionally pass a subreddit to get the top psot there instead",
         process: function(bot,msg,suffix) {
             var path = "/.rss"
             if(suffix){
@@ -295,7 +245,7 @@ var commands = {
     }
 };
 try{
-var rssFeeds = require("./rss.json");
+var rssFeeds = require("./config/rss.json");
 function loadFeeds(){
     for(var cmd in rssFeeds){
         commands[cmd] = {

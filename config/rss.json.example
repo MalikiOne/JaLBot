@@ -1,0 +1,7 @@
+// For the RSS I get it to pull the last tweet from Twitter via RSS
+{
+    "lasttweet": {
+        "description" : "Last Tweet From Twitter",
+        "url" : "http://twitrss.me/twitter_user_to_rss/?user=<twitteruser>"
+    }
+}

@@ -1,0 +1,6 @@
+// !twich <streamer> Add or remove Twitch streamers to this list.
+{
+    "streamer1": "http://twitch.tv/timmac",
+    "streamer2": "http://twitch.tv/mrmoonshouse",
+    "streamer3": "http://twitch.tv/mrmrbong011"
+}
