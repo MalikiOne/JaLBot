@@ -21,8 +21,11 @@ var config = {
     "api_key": "dc6zaTOxFJmzC",
     "rating": "r",
     "url": "http://api.giphy.com/v1/gifs/search",
-    "permission": ["NORMAL"]
-};
+    "permission": ["NORMAL"]};
+// RSS Support
+var FeedParser 		= require('feedparser');
+var rssFeeds 		= require("./config/rss.json");
+
 var commands = {
 		//Repond Back Commands
 	    "pet": {
@@ -244,8 +247,9 @@ var commands = {
         }
     }
 };
+
+// You shouldn't need to edit anything after here
 try{
-var rssFeeds = require("./config/rss.json");
 function loadFeeds(){
     for(var cmd in rssFeeds){
         commands[cmd] = {
@@ -267,7 +271,6 @@ function loadFeeds(){
 }
 
 function rssfeed(bot,msg,url,count,full){
-    var FeedParser = require('feedparser');
     var feedparser = new FeedParser();
     var request = require('request');
     request(url).pipe(feedparser);
