@@ -51,7 +51,7 @@ Commands
 	
 - !twitter <Twitter username>
     
-	(http://twitter,com/<streamers name>)
+	(http://twitter.com/<streamers name>)
 
 - !twitch <streamer name>
     
