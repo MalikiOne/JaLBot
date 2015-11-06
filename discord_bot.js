@@ -249,6 +249,14 @@ var commands = {
         description: "logs message to bot console",
         process: function(bot,msg,suffix){console.log(msg.content);}
     },
+
+"stickers": {
+        description: "AND HIS NAME IS",
+        process: function(bot, msg, suffix) {
+            bot.sendMessage(msg.channel, " **Stickers** http://picosong.com/mhqM/");
+        }
+    },	
+
 "reddit": {
         usage: "[subreddit]",
         description: "Returns the top post on reddit. Can optionally pass a subreddit to get the top psot there instead",
@@ -333,10 +341,6 @@ bot.on("message", function (msg) {
         console.log("treating " + msg.content + " from " + msg.author + " as command");
 		var cmdTxt = msg.content.split(" ")[0].substring(1);
         var suffix = msg.content.substring(cmdTxt.length+2);//add one for the ! and one for the space
-        if(msg.content.indexOf(bot.user.mention()) == 0){
-            cmdTxt = msg.content.split(" ")[1];
-            suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+2);
-        }
 		var cmd = commands[cmdTxt];
         if(cmdTxt === "gammaagefive"){
             //help is special since it iterates over the other commands
@@ -356,7 +360,7 @@ bot.on("message", function (msg) {
 		else if(cmd) {
             cmd.process(bot,msg,suffix);
 		} else {
-			bot.sendMessage(msg.channel, "Invalid command " + cmdTxt);
+			bot.sendMessage(msg.channel, "Invalid command ");
 		}
 	} else {
 		//message isn't a command or is from us
