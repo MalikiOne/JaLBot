@@ -3,7 +3,7 @@
 Framework Built Off: 
 
 - <a href="https://github.com/SteamingMutt/DougleyBot">DougleyBot</a>
-	A chat bot for discord app based off <a href="https://github.com/chalda/DiscordBot/">Port of Nekobot (by Kusoneko)</a>, which is based off <a href="https://github.com/hydrabolt/discord.js/">discord.js</a>.
+	A chat bot for discord app based off <a href="https://github.com/chalda/DiscordBot/">Chalda's DiscordBot</a>, which is based off <a href="https://github.com/hydrabolt/discord.js/">discord.js</a>.
 
 - <a href="https://github.com/TehSeph/Neko.js/">Neko.js</a>
 	A chat bot for discord app based off <a href="https://github.com/Kusoneko/Nekobot/">Port of Nekobot (by Kusoneko)</a>, which is based off <a href="https://github.com/hydrabolt/discord.js/">discord.js</a>. (Borrowed the !pet command)
